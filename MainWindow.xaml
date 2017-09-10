@@ -1,0 +1,107 @@
+﻿<Controls:MetroWindow x:Class="WpfApplication.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    Title="SirMestre BlackCat" Height="600" Width="270.91" Left="10" Top="50" Background="White" BorderThickness="0" Topmost="True"
+    GlowBrush="Black"
+    ResizeMode="NoResize" Icon="Black_Cat.png">
+    <Grid>
+        <TabControl x:Name="tabControl" FontFamily="Scriptina Pro">
+            <TabItem Header="MENU">
+                <ScrollViewer>
+                    <Grid>
+                        <StackPanel>
+                            <Expander Header="SELF" FontFamily="Verdana" IsExpanded="True" BorderThickness="0">
+                                <StackPanel>
+                                    <Controls:ToggleSwitch x:Name="God_Mode_ToggleSwitch" Header="God Mode" Click="God_Mode_ToggleSwitch_Click" />
+                                    <Label Content="Wanted Level:" FontSize="14" />
+                                    <Controls:NumericUpDown x:Name="Wanted_Level_NumericUpDown" Minimum="0" Maximum="5" Interval="1" StringFormat="0" Value="0" ValueChanged="Wanted_Level_NumericUpDown_ValueChanged" HasDecimals="False" />
+                                    <Label Content="Sprint Speed:" FontSize="14" />
+                                    <Slider x:Name="Sprint_Speed_Slider" Minimum="1" Maximum="12" Value="1" Thumb.DragCompleted="Sprint_Speed_Slider_DragCompleted" />
+                                    <Label Content="Swim Speed:" FontSize="14" />
+                                    <Slider x:Name="Swim_Speed_Slider" Minimum="1" Maximum="5" Value="1" Thumb.DragCompleted="Swim_Speed_Slider_DragCompleted" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="TELEPORT" FontFamily="Verdana" IsExpanded="True" BorderThickness="0">
+                                <StackPanel>
+                                    <Button x:Name="Teleport_To_Waypoint_Button" Content="Teleport To Waypoint" Click="Teleport_To_Waypoint_Button_Click" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="VEHICLE" FontFamily="Verdana" IsExpanded="True" BorderThickness="0">
+                                <StackPanel>
+                                    <Controls:ToggleSwitch x:Name="God_Mode_Vehicle_ToggleSwitch" Header="God Mode" Click="God_Mode_Vehicle_ToggleSwitch_Click" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="WEAPONS" FontFamily="Verdana" IsExpanded="True" BorderThickness="0">
+                                <StackPanel>
+                                    <Controls:ToggleSwitch x:Name="Unlimited_Ammo_ToggleSwitch" Header="Unlimited Ammo" Click="Unlimited_Ammo_ToggleSwitch_Click" />
+                                </StackPanel>
+                            </Expander>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="ABOUT">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Developer :" FontFamily="Arial" />
+                        <Label Content="SirMestre" FontFamily="Helvetica Neue" FontSize="20" Margin="10,0,0,0">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-10"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label Content="Credits :" FontFamily="Arial" />
+                        <Label Content="7h3 7r14ngl3" FontFamily="Helvetica Neue" FontSize="12" Margin="10,0,0,0">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-10"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label Content="Mike Rohsoft" FontFamily="Helvetica Neue" FontSize="12" Margin="10,0,0,0">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-10"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label Content="sub1to" FontFamily="Helvetica Neue" FontSize="12" Margin="10,0,0,0">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-10"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label Content="zAcuma" FontFamily="Helvetica Neue" FontSize="12" Margin="10,0,0,0">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-10"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Image Source="blackcat-logo.gif" Stretch="Fill" StretchDirection="DownOnly" />
+                        <Label Content="You can contact me on Discord : SirMestre#8255" FontFamily="Helvetica Neue" FontSize="10" />
+                        <Label Content="SirMestre BlackCat v0.2" FontFamily="Arial" HorizontalAlignment="Right" FontSize="10" Margin="0,70,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Controls:MetroWindow>
