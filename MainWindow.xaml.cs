@@ -118,6 +118,21 @@ namespace WpfApplication
             }
         }
 
+        private void Unlimited_Magazine_ToggleSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            if (MemoryFunctions.IsGameRunning() == true)
+            {
+                Application.Current.Dispatcher.Invoke(delegate
+                {
+                    MemoryFunctions.GAME_set_Unlimited_Magazine(Unlimited_Magazine_ToggleSwitch.IsChecked);
+                });
+            }
+            else
+            {
+                Unlimited_Magazine_ToggleSwitch.IsChecked = false;
+            }
+        }
+
         private void God_Mode_Vehicle_ToggleSwitch_Click(object sender, RoutedEventArgs e)
         {
             if (MemoryFunctions.IsGameRunning() == true)
@@ -129,6 +144,21 @@ namespace WpfApplication
             } else
             {
                 God_Mode_Vehicle_ToggleSwitch.IsChecked = false;
+            }
+        }
+
+        private void No_Bike_Fall_ToggleSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            if (MemoryFunctions.IsGameRunning() == true)
+            {
+                Application.Current.Dispatcher.Invoke(delegate
+                {
+                    MemoryFunctions.GAME_set_No_Bike_Fall(No_Bike_Fall_ToggleSwitch.IsChecked);
+                });
+            }
+            else
+            {
+                No_Bike_Fall_ToggleSwitch.IsChecked = false;
             }
         }
 

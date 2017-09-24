@@ -1,4 +1,5 @@
 ﻿using Model.Libraries.Memory;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -33,6 +34,7 @@ namespace SirMestreBlackCat.Model
 
         int[] OFFSETS_God_Mode = new int[] { 0x08, 0x189 };
         int[] OFFSETS_God_Mode_Vehicle = new int[] { 0x08, 0xD28, 0x189 };
+        int[] OFFSETS_No_Bike_Fall = new int[] { 0x8, 0x13EC };
         int[] OFFSETS_Wanted_Level = new int[] { 0x08, 0x10B8, 0x7F8 };
         int[] OFFSETS_Sprint_Speed = new int[] { 0x08, 0x10B8, 0x14C };
         int[] OFFSETS_Swim_Speed = new int[] { 0x08, 0x10B8, 0x0148 };
@@ -57,7 +59,8 @@ namespace SirMestreBlackCat.Model
             if (enabled == true)
             {
                 WriteBytes(pointer, new byte[] { 0x1, 0x69 });
-            } else
+            }
+            else
             {
                 WriteBytes(pointer, new byte[] { 0x0, 0x69 });
             }
@@ -74,6 +77,20 @@ namespace SirMestreBlackCat.Model
             else
             {
                 WriteBytes(pointer, new byte[] { 0x0 });
+            }
+        }
+
+        // No Bike Fall.
+        public void GAME_set_No_Bike_Fall(bool? enabled)
+        {
+            long pointer = GetPointerAddress(BaseAddress + WorldPTR, OFFSETS_No_Bike_Fall);
+            if (enabled == true)
+            {
+                WriteBytes(pointer, new byte[] { 0xC9 });
+            }
+            else
+            {
+                WriteBytes(pointer, new byte[] { 0xC8 });
             }
         }
 
@@ -107,20 +124,31 @@ namespace SirMestreBlackCat.Model
         // Unlimited Ammo.
         public void GAME_set_Unlimited_Ammo(bool? enabled)
         {
-            // Ammo.
             long pointer = GetPointerAddress(BaseAddress + AmmoPTR);
-            // Magazine.
-            long pointer2 = GetPointerAddress(BaseAddress + ClipPTR);
 
             if (enabled == true)
             {
-                WriteBytes(pointer, new byte[] { 0x90, 0x90, 0x90, 0xE8 });
-                WriteBytes(pointer2, new byte[] { 0x90, 0x90, 0x90, 0x3B, 0xC8, 0x0F });
+                WriteBytes(pointer, BitConverter.GetBytes(0xE8909090));
             }
             else
             {
-                WriteBytes(pointer, new byte[] { 0x41, 0x2B, 0xD1, 0xE8 });
-                WriteBytes(pointer2, new byte[] { 0x41, 0x2B, 0xC9, 0x3B, 0xC8, 0x0F });
+                WriteBytes(pointer, BitConverter.GetBytes(0xE8d12b41));
+            }
+        }
+
+        // Unlimited Magazine.
+        public void GAME_set_Unlimited_Magazine(bool? enabled)
+        {
+
+            long pointer = GetPointerAddress(BaseAddress + ClipPTR);
+
+            if (enabled == true)
+            {
+                WriteBytes(pointer, BitConverter.GetBytes(0x3b909090));
+            }
+            else
+            {
+                WriteBytes(pointer, BitConverter.GetBytes(0x3bc92b41));
             }
         }
 
